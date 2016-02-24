@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Modifier le texte{% endblock %}
+
+{% block body %}
+    <h3>Modifier le texte</h3>
+    <div class="menu_options">
+        {{ form_start(delete_form) }}
+            <input class="btn btn-default" type="submit" value="Supprimer ce texte">
+        {{ form_end(delete_form) }}
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+                <div class="form-group">
+                    {{ form_row(edit_form.texte) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(edit_form.selected) }}
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-default" type="submit" value="Enregistrer la modification" />
+                </div>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+    <a href="{{ path('content_index') }}" title="Retour">Retour à l'administration</a><br>
+{% endblock %}

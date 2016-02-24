@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Liste des textes{% endblock %}
+
+{% block body %}
+    <h3>Administration des textes déjà créés</h3>
+
+    <a href="{{ path('content_new') }}">Ajouter un texte</a><br>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>                
+                <th>Texte</th>
+                <th>Sélectionné</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for content in contents %}
+            <tr>
+                <td>{{ content.texte }}</td>
+                <td>
+                    {% if content.selected %}
+                        {% if content.selected == true %}
+                            oui
+                        {% else %}
+                            -
+                        {% endif %}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>                    
+                    <a href="{{ path('content_show', { 'id': content.id }) }}">voir</a>
+                    <a href="{{ path('content_edit', { 'id': content.id }) }}">modifier</a>   
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>        
+
+{% endblock %}

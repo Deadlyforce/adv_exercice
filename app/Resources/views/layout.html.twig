@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite'
+                '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.css'
+                '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap-theme.css'
+                'bundles/app/css/custom.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}"/>
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block javascripts %}
+            {% javascripts
+                '%kernel.root_dir%/../vendor/components/jquery/jquery.min.js'
+                '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" target="_blank" href="http://www.aasbuilding.com/" title="AAS">
+                            <img src="{{ asset('bundles/app') }}/images/logo.jpg" alt="AAS"/>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ path('homepage') }}" title="Accueil">Accueil</a></li>
+                            <li><a href="#" title="Les services">Les services</a></li>
+                            <li><a href="#" title="Le réseau">Le réseau</a></li>
+                            <li><a href="#" title="Plan du site">Plan du site</a></li>
+                            <li><a href="#" title="Nous contacter">Nous contacter</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Infos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Domiciliation commerciale</a></li>
+                                    <li><a href="#">Permanence téléphonique</a></li>
+                                    <li><a href="#">Location de bureaux équipés</a></li>
+                                    <li><a href="#">Secrétariat</a></li>
+                                    <li><a href="#">Location de bureaux</a></li>
+                                    <li><a href="#">Avantage réseau</a></li>
+                                    <li><a href="#">Notre réseau national</a></li>
+                                    <li><a href="#">Votre bureau virtuel</a></li>
+                                    <li><a href="#">Carte de notre réseau</a></li>
+                                    <li><a href="#">Location de bureaux meublés</a></li>
+                                    <li><a href="#">Formulaire renseignements</a></li>
+                                    <li><a href="#">Adhésion réseau</a></li>
+                                </ul>
+                            </li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav_admin"><a href="{{ path('content_index') }}" title="Admin">Admin</a></li>
+                                <li class="nav_admin"><a href="{{ path('fos_user_security_logout') }}" title="Admin">Logout</a></li>
+                            {% else %}
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    <li class="nav_admin"><a href="{{ path('fos_user_security_logout') }}" title="Admin">Logout</a></li>
+                                {% else %}    
+                                    <li class="nav_admin"><a href="{{ path('fos_user_security_login') }}" title="Admin">Login</a></li>
+                                    <li class="nav_admin"><a href="{{ path('fos_user_registration_register') }}" title="Admin">Register</a></li>
+                                {% endif %}                            
+                            {% endif %}                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <section>
+            {% block body %}               
+            {% endblock %}               
+            </section>
+            
+            <footer class="navbar-fixed-bottom">                
+                <div class="container">
+                    <a href="#">Location bureaux</a>
+                    <a href="#">Adhésion réseau</a>
+                    <a href="#">Avantage réseau</a>
+                    <a href="#">Carte de notre réseau</a>
+                    <a href="#">Domiciliation commerciale</a>
+                    <p>© 2010 aas building centres d'affaires et location de bureaux. Tous droits réservés.</p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

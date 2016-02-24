@@ -1,0 +1,78 @@
+/* Bootstrap overrides */
+
+.navbar, .navbar-default{
+    border-radius: 0px;
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+/****************** BODY *********************/
+
+section{
+    padding-top: 35px;
+}
+
+#accueil_title{
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.menu_options{
+    margin-bottom: 15px;
+}
+
+/****************** NAV *********************/
+
+.navbar-brand > img{
+    height: 25px;
+}
+
+.nav_admin{
+    font-weight: bold;
+    color: red;
+}
+
+/****************** FORMS *********************/
+
+/*********** LOGIN *************/
+
+.panel-login{
+    width: 500px;
+    margin: 0 auto;
+}
+
+label[for="username"], label[for="password"]{
+    width: 100px;
+}
+label[for="remember_me"]{
+    padding-left: 10px;
+}
+
+/*********** REGISTER *************/
+
+form[name="fos_user_registration_form"] label{
+    width: 200px;
+}
+
+/*********** EDIT CONTENT *************/
+
+form[name="content"] label{
+    width: 200px;
+    vertical-align: top;
+}
+
+#content_texte{
+    width: 500px;
+    height: 100px;
+}
+
+/****************** FOOTER *********************/
+
+footer > div{
+    background-color: #ddd;
+    padding: 30px 0px 50px 0px;
+    text-align: center;
+}

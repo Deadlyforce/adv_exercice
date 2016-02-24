@@ -1,0 +1,24 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h3>Administration</h3>
+    <p>Actions sur le texte de location de la page d'accueil: </p>
+    <a href="{{ path('content_new') }}" title="Créer">Créer un nouveau texte</a><br>
+    
+    <table class="table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Texte</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

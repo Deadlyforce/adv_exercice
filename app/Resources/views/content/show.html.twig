@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h3>Texte complet</h3>
+    
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>{{ content.texte }}</p>
+        </div>
+    </div>
+      
+    <a href="{{ path('content_index') }}">Retour à la liste</a><br>
+    <a href="{{ path('content_edit', { 'id': content.id }) }}">Edit</a><br>
+
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
+{% endblock %}
